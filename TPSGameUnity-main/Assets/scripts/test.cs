@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    public GameObject gameObject;
+    public Animator anime;
+    public bool state;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,9 +13,6 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(gameObject);
-        }
+        anime.SetBool("change", state);
     }
 }

@@ -11,9 +11,10 @@ public class PlayerMover : MonoBehaviour
     private CharacterController cc;
     private PlayerInputReader inputReader;
     public Transform cameraTransform;
-
+    public playeranimationncontroller controller;
     private void Awake()
     {
+        controller=GetComponent<playeranimationncontroller>();
         cc = GetComponent<CharacterController>();
         inputReader = GetComponent<PlayerInputReader>();
     }
@@ -31,5 +32,7 @@ public class PlayerMover : MonoBehaviour
 
         moveDirection.y = verticalVelocity;
         cc.Move(moveDirection*moveSpeed*Time.deltaTime);
+        float floatSpeed=new Vector3(moveDirection.x,0f,moveDirection.z).magnitude;
+        controller.UpdateMoveAnim(floatSpeed);
     }
 }
